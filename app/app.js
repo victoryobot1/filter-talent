@@ -25,5 +25,7 @@ let data = [
 
 let location = "springfield";
 
-let result = functions.filterTalent(data, location);
-//console.log(result);
+//let result = functions.filterTalent(data, location);
+
+let result = functions.filterTalentByAge(data, 65);
+console.log(result);

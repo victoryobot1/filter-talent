@@ -97,3 +97,26 @@ exports.filterTalent = function (talentList, location) {
   }
   return result;
 };
+
+exports.filterTalentByAge = function (talentList, age) {
+  let result = [];
+
+  for (let i = 0; i < talentList.length; i++) {
+    const talent = talentList[i];
+    let today = new Date();
+    let talentDOB = new Date(talent.date_of_birth);
+    let dateCheck = false;
+    if (today.getMonth() < talentDOB.getMonth()) {
+      if (today.getDate() < talentDOB.getDate()) {
+        dateCheck = true;
+      }
+    }
+
+    let talentAge = today.getUTCFullYear() - talentDOB.getUTCFullYear();
+    if (dateCheck) talentAge -= 1;
+    console.log("talentAge:", talentAge, "inputAge:", age);
+    if (talentAge == age) result.push(talent);
+  }
+
+  return result;
+};
